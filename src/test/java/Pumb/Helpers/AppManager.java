@@ -8,6 +8,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
+import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,12 +16,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class AppManager extends RozetkaHelper {
 
-  protected void init() {
+  protected void init() throws AWTException {
     // 1. Открыть браузер IE
     wd = new InternetExplorerDriver();
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     // 2. развернуть на весь экран.
     wd.manage().window().maximize();
+    Robot bot = new Robot();
+    bot.mouseMove(0,0);
   }
 
   protected void stop() {
