@@ -1,71 +1,49 @@
 package Pumb.Tests;
 
 import Pumb.Helpers.TestBase;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import static org.testng.Assert.*;
-
-import java.util.concurrent.TimeUnit;
-import java.util.Date;
-import java.io.File;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.*;
-import static org.openqa.selenium.OutputType.*;
 
 public class RosetkaTest extends TestBase {
 
-
     @Test
     public void RosetkaTest() throws InterruptedException {
-        openRozetka();
-        //Smartphonu i electronica
-        chooseSmartphones();
-        //mobile
-        chooseMobile();
-        //price
-        setAPrice();
-        //inch
-        inch41_45();
+        app.openRozetka();
+        //3. В разделе Смартфоны выбрать Мобильные телефоны.
+        app.chooseSmartphones();
+        app.chooseMobile();
+        //4. Задать параметр поиска до 6 000 грн
+        app.setAPrice();
+        //4. Диагональ экрана от 4 дюймов.
+        app.inch41_45();
         Thread.sleep(7000);
-        inch45_5();
+        app.inch45_5();
         Thread.sleep(7000);
-        inch51_55();
+        app.inch51_55();
         Thread.sleep(10000);
-        inch555_6();
+        app.inch555_6();
         Thread.sleep(10000);
-        inchMoreThan6();
+        app.inchMoreThan6();
         Thread.sleep(10000);
-        //brand
-        chooseAsus();
-        chooseHTC();
-        chooseHuawei();
-        chooseMeizu();
-        chooseSamsung();
+        //6. Выбрать не менее 5 любых производителей, среди популярных.
+        app.chooseAsus();
+        app.chooseHTC();
+        app.chooseHuawei();
+        app.chooseMeizu();
+        app.chooseSamsung();
         Thread.sleep(7000);
-        //count of elements
-        checkCountOfElements();
-        //remember
-        String elementID = firstElementInList();
-        //sort (new)
-        sortByNew();
-        //find and click
-        openRememberedPhone(elementID);
-        //stats
-        printValuation();
+        //8. Проверить, что на странице >1 элемента
+        app.checkCountOfElements();
+        //9. Запомнить первый элемент в списке.
+        String elementID = app.firstElementInList();
+        //10. Изменить Сортировку на другую (популярность или новизна).
+        app.sortByNew();
+        //11. Найти и нажать по имени запомненного объекта.
+        app.openRememberedPhone(elementID);
+        //Вывести цифровое значение его оценки.
+        app.printValuation();
 
     }
 
-    
+
 
 }
