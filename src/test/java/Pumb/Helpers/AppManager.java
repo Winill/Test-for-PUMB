@@ -1,12 +1,6 @@
 package Pumb.Helpers;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.testng.Assert;
 
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +17,7 @@ public class AppManager extends RozetkaHelper {
     // 2. развернуть на весь экран.
     wd.manage().window().maximize();
     Robot bot = new Robot();
-    bot.mouseMove(0,0);
+    bot.mouseMove(0, 0);
   }
 
   protected void stop() {
@@ -31,12 +25,4 @@ public class AppManager extends RozetkaHelper {
     wd.quit();
   }
 
-  public static boolean isAlertPresent(FirefoxDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
 }
